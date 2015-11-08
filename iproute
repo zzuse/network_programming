@@ -1,0 +1,4 @@
+ip route add 192.160.13.3/32 via 192.161.108.254 dev eth1 src 192.161.108.1
+ip route add 192.160.13.4/32 via 192.161.110.254 dev eth3 src 192.161.110.1
+ip route add 192.160.13.131/32 via 192.161.109.254 dev eth2 src 192.161.109.1
+ip route add 192.160.13.132/32 via 192.161.111.254 dev eth4 src 192.161.111.1

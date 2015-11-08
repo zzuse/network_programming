@@ -1,0 +1,6 @@
+tshark -i any port 3868 -w filename.cap
+tshark -i any -c 4 -d tcp.port==3968,diameter host 169.254.64.12
+http://wiki.wireshark.org/CaptureSetup/CapturePrivileges
+tcp.port == 3968
+cap vmnet1
+ip.addr == 172.25.126.1 && tcp.port == 3968

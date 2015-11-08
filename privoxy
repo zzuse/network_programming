@@ -1,0 +1,4 @@
+#socks to http
+sudo /Applications/Privoxy/startPrivoxy.sh
+export http_proxy=http://localhost:8118 https_proxy=http://127.0.0.1:8118
+

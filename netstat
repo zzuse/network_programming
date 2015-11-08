@@ -1,0 +1,3 @@
+netstat   -ano
+netstat -pan | grep LISTEN | grep -i oamcom
+
