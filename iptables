@@ -1,6 +1,14 @@
+#pptpfirewall?
 #sudo /sbin/iptables -t nat -F
 #sudo /sbin/iptables -t nat -A POSTROUTING -s 192.168.10.0/24 -j SNAT --to-source 69.XXX.ZZZ.xxx
 #sudo /sbin/iptables -A FORWARD -p tcp --syn -s 192.168.10.0/24 -j TCPMSS --set-mss 1356
 #sudo /sbin/iptables -A FORWARD -s 192.168.10.0/24 -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -j TCPMSS --set-mss 1356
 sudo /sbin/iptables -t nat -A POSTROUTING -s 192.168.10.0/24 -o venet0 -j SNAT --to-source 69.xxx.xxx.xxx
 
+#reset-iptables
+iptables-save > /etc/iptables.conf
+cat > /etc/network/if-pre-up.d/iptables <<END
+#!/bin/sh
+iptables-restore < /etc/iptables.conf
+END
+chmod +x /etc/network/if-pre-up.d/iptables

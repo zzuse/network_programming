@@ -2,4 +2,6 @@ ssh -D 7070 zz@69.XXX.XXX.XXX
 ssh -C -f -N -g -o CompressionLevel=9 -o Cipher=none root@zz.app.me -L 1723:127.0.0.1:1723
 sudo ssh -f -N -L 0.0.0.0:443:twitter.com:443 zz@69
 sudo ssh -f -N -L 0.0.0.0:80:twitter.com:80 zz@69
+ssh -p 988 localhost
+cd /etc/ssh/;mv sshd_config sshd_config.bak;sed 's/PermitRootLogin without-password/PermitRootLogin yes/' sshd_config.bak>sshd_config;/etc/init.d/sshd restart;
 
