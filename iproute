@@ -2,3 +2,10 @@ ip route add 192.160.13.3/32 via 192.161.108.254 dev eth1 src 192.161.108.1
 ip route add 192.160.13.4/32 via 192.161.110.254 dev eth3 src 192.161.110.1
 ip route add 192.160.13.131/32 via 192.161.109.254 dev eth2 src 192.161.109.1
 ip route add 192.160.13.132/32 via 192.161.111.254 dev eth4 src 192.161.111.1
+
+route get 0.0.0.0
+sudo route -n flush
+sudo route -nv add -net 0.0.0.0 10.1.38.1 
+sudo route -nv add -net 192.130.12.38/16 -interface en4
+sudo route -nv delete -net default -interface en0
+sudo route -nv add -net default -interface en0
