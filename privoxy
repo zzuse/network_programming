@@ -2,3 +2,10 @@
 sudo /Applications/Privoxy/startPrivoxy.sh
 export http_proxy=http://localhost:8118 https_proxy=http://127.0.0.1:8118
 
+#add some cntlm usage
+/usr/local/etc/cntlm.conf
+#Username
+#Domain
+#Password
+#Proxy .com:8080
+#No Proxy 10.*,192.168.*

@@ -1,3 +1,5 @@
-netstat   -ano
+netstat -ano
 netstat -pan | grep LISTEN | grep -i oamcom
+netstat -pan | grep port number 
+netstat -pan | grep program name 
 
