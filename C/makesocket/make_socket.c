@@ -23,14 +23,17 @@ int make_socket(uint16_t port) {
         perror("bind");
         exit(EXIT_FAILURE);
     }
-    printf("%02x ", (unsigned char)(name.sin_family));
-    printf("%02x ", (unsigned char)(name.sin_port));
-    printf("%02x ", (unsigned char)(name.sin_addr.s_addr));
+
+    /* Print the values in hexadecimal format */
+    printf("Family: 0x%02x\n", name.sin_family);
+    printf("Port: 0x%04x\n", ntohs(name.sin_port)); // Convert to host byte order
+    printf("Address: 0x%08x\n", ntohl(name.sin_addr.s_addr)); // Convert to host byte order
+
     return sock;
 }
 
 int main(int argc, char **argv) {
     int sockfd = make_socket(12345);
-    printf("%d", sockfd);
+    printf("Socket FD: %d\n", sockfd);
     exit(0);
 }
