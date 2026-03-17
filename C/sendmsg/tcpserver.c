@@ -30,7 +30,10 @@ int main(int argc, char **argv) {
     servaddr.sin_port = htons(12345);
 
     /* bind到本地地址，端口为12345 */
-    bind(listenfd, (struct sockaddr *) &servaddr, sizeof(servaddr));
+    int bind_rt = bind(listenfd, (struct sockaddr *) &servaddr, sizeof(servaddr));
+    if (bind_rt < 0) {
+        error(1, errno, "bind failed");
+    }
     /* listen的backlog为1024 */
     listen(listenfd, 1024);
 
