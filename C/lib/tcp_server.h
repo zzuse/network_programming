@@ -1,6 +1,9 @@
 #ifndef TCP_SERVER_H
 #define TCP_SERVER_H
 
+struct tcp_connection;
+struct buffer;
+
 typedef int (*connection_completed_call_back)(struct tcp_connection *tcpConnection);
 
 typedef int (*message_call_back)(struct buffer *buffer, struct tcp_connection *tcpConnection);
