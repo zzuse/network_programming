@@ -1,23 +1,23 @@
 
 set(yolanda_lib
             log.c
-            sock_ntop.c
+            # sock_ntop.c
             read.c
-            tcp_server.c
-            tcp_client.c
-            event_loop.c
-            channel.c
-            acceptor.c
-            channel_map.c
-            poll_dispatcher.c
-            thread_pool.c
-            event_loop_thread.c
-            utils.c
-            buffer.c
-            tcp_connection.c
-            http_server.c
-            http_request.c
-            http_response.c
+            # tcp_server.c
+            # tcp_client.c
+            # event_loop.c
+            # channel.c
+            # acceptor.c
+            # channel_map.c
+            # poll_dispatcher.c
+            # thread_pool.c
+            # event_loop_thread.c
+            # utils.c
+            # buffer.c
+            # tcp_connection.c
+            # http_server.c
+            # http_request.c
+            # http_response.c
             )
 
 add_library(zz ${yolanda_lib})
