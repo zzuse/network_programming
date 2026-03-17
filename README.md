@@ -18,5 +18,17 @@ cmake --build . --target clean
 # or CLEAN
 ninja -t clean
 ```
-*  C/makesocket Chapter 4 -- commit 264f1ae307b95ebc0243ceda45d0b53cbb69cec7
-*  C/sendmsg Chapter 5
+*  C/makesocket Chapter 4 
+    start `bin/make_socket`
+    Family: 0x02
+    Port: 0x3039
+    Address: 0x00000000
+    Socket FD: 3
+*  C/tcpserver Chapter 5 
+    start `bin/tcpserver`
+    then start `bin/tcpclient <IPaddress>`
+    you will find client send 10MB data to server, and server print "1K read for x" for 10000 times.
+*  C/udpserver Chapter 6
+    start `bin/udpserver`
+    then start `bin/udpclient <IPaddress>`
+    
