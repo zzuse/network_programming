@@ -1,16 +1,14 @@
-//#include <netinet/in.h>
-#include "lib/common.h"
+// #include <netinet/in.h>
+#include "../lib/common.h"
 
+#define NDG 2000   /* datagrams to send */
+#define DGLEN 1400 /* length of each datagram */
+#define MAXLINE 4096
 
-# define    NDG         2000    /* datagrams to send */
-# define    DGLEN       1400    /* length of each datagram */
-# define    MAXLINE     4096
-
-
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     if (argc != 2) {
         error(1, 0, "usage: udpclient <IPaddress>");
-
     }
     int socket_fd;
     socket_fd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -37,7 +35,7 @@ int main(int argc, char **argv) {
         }
 
         printf("now sending %s\n", send_line);
-        size_t rt = sendto(socket_fd, send_line, strlen(send_line), 0, (struct sockaddr *) &server_addr, server_len);
+        size_t rt = sendto(socket_fd, send_line, strlen(send_line), 0, (struct sockaddr *)&server_addr, server_len);
         if (rt < 0) {
             error(1, errno, "send failed ");
         }
@@ -45,8 +43,7 @@ int main(int argc, char **argv) {
 
         len = 0;
         n = recvfrom(socket_fd, recv_line, MAXLINE, 0, reply_addr, &len);
-        if (n < 0)
-            error(1, errno, "recvfrom failed");
+        if (n < 0) error(1, errno, "recvfrom failed");
         recv_line[n] = 0;
         fputs(recv_line, stdout);
         fputs("\n", stdout);
@@ -54,5 +51,3 @@ int main(int argc, char **argv) {
 
     exit(0);
 }
-
-
