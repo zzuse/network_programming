@@ -1,0 +1,7 @@
+tcpdump -i eth0
+tcpdump src host hostname
+tcpdump 'tcp and port 80 and src host 192.168.1.25' 
+# 这里 tcp[13:1]表示的是 TCP 头部开始处偏移为 13 的字节，如果这个值为 2，说明设置了 SYN 分节
+tcpdump 'tcp and port 80 and tcp[13:1]&2 != 0'
+# 抓取 1400 端口 UDP 报文并保存：
+tcpdump host 10.1.11.133 and udp port 5060 -v -w gw.cap
