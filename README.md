@@ -18,6 +18,9 @@ cmake --build . --target clean
 # or CLEAN
 ninja -t clean
 ```
+
+## Run
+
 *  C/makesocket Chapter 4 
     start `bin/make_socket`
     Family: 0x02
@@ -31,4 +34,11 @@ ninja -t clean
 *  C/udpserver Chapter 6
     start `bin/udpserver`
     then start `bin/udpclient <IPaddress>`
-    
+    then type some message in client, and press enter, you will see the message in server.
+*  C/localsocket Chapter 7
+    start `bin/unixstreamserver <local_path>`
+    then start `bin/unixstreamclient <local_path>`
+    then type some message in client, and press enter, you will see the message in server.
+    start `bin/unixdataserver <local_path>`
+    then start `bin/unixdataclient <local_path>`
+    then type some message in client, and press enter, you will see the message in server.

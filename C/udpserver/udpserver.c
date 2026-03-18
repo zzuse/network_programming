@@ -29,6 +29,7 @@ int main(int argc, char **argv)
     char message[MAXLINE];
     count = 0;
 
+    // will print received number of datagrams when press ctrl+c
     signal(SIGINT, recvfrom_int);
 
     struct sockaddr_in client_addr;
