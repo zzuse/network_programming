@@ -47,6 +47,6 @@ ninja -t clean
     start `bin/graceserver`
     then start `bin/graceclient <IPaddress>`
 *  C/keepalive Chapter 12
-    start `bin/keepaliveserver sleepingtime`
-    then start `bin/keepaliveclient <IPaddress>`
+    start `bin/pingserver sleepingtime`
+    then start `bin/pingclient <IPaddress>`
     

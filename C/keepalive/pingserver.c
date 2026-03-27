@@ -62,7 +62,7 @@ int main(int argc, char **argv)
             error(1, 0, "client closed \n");
         }
 
-        printf("received %d bytes %s\n", n, message.type == MSG_PING ? "PING" : "UNKNOWN");
+        printf("received %d bytes %s\n", n, ntohl(message.type) == MSG_PING ? "PING" : "UNKNOWN");
         count++;
 
         switch (ntohl(message.type)) {
@@ -76,7 +76,7 @@ int main(int argc, char **argv)
 
             case MSG_PING: {
                 messageObject pong_message;
-                pong_message.type = MSG_PONG;
+                pong_message.type = htonl(MSG_PONG);
                 sleep(sleepingTime);
                 ssize_t rc = send(connfd, (char *)&pong_message, sizeof(pong_message), 0);
                 if (rc < 0) error(1, errno, "send failure");

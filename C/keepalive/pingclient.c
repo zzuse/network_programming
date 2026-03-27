@@ -39,7 +39,7 @@ int main(int argc, char **argv)
     tv.tv_sec = KEEP_ALIVE_TIME;
     tv.tv_usec = 0;
 
-    messageObject messageObject;
+    messageObject messagealive;
 
     FD_ZERO(&allreads);
     FD_SET(0, &allreads);
@@ -55,8 +55,8 @@ int main(int argc, char **argv)
                 error(1, 0, "connection dead\n");
             }
             printf("sending heartbeat #%d\n", heartbeats);
-            messageObject.type = htonl(MSG_PING);
-            rc = send(socket_fd, (char *)&messageObject, sizeof(messageObject), 0);
+            messagealive.type = htonl(MSG_PING);
+            rc = send(socket_fd, (char *)&messagealive, sizeof(messageObject), 0);
             if (rc < 0) {
                 error(1, errno, "send failure");
             }
@@ -70,6 +70,9 @@ int main(int argc, char **argv)
             } else if (n == 0) {
                 error(1, 0, "server terminated \n");
             }
+            messageObject pongmessage;
+            strncpy((char *)&pongmessage, recv_line, sizeof(messageObject));
+            printf("received %d bytes %s\n", n, ntohl(pongmessage.type) == MSG_PONG ? "PONG" : "UNKNOWN");
             printf("received heartbeat, make heartbeats to 0 \n");
             heartbeats = 0;
             tv.tv_sec = KEEP_ALIVE_TIME;
