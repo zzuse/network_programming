@@ -64,16 +64,15 @@ int main(int argc, char **argv)
             continue;
         }
         if (FD_ISSET(socket_fd, &readmask)) {
-            n = read(socket_fd, recv_line, MAXLINE);
+            messageObject pongmessage;
+            n = read(socket_fd, (char *)&pongmessage, sizeof(messageObject));
             if (n < 0) {
                 error(1, errno, "read error");
             } else if (n == 0) {
                 error(1, 0, "server terminated \n");
             }
-            messageObject pongmessage;
-            strncpy((char *)&pongmessage, recv_line, sizeof(messageObject));
-            printf("received %d bytes %s\n", n, ntohl(pongmessage.type) == MSG_PONG ? "PONG" : "UNKNOWN");
-            printf("received heartbeat, make heartbeats to 0 \n");
+            printf("received heartbeat %d bytes reset %s\n", n,
+                   ntohl(pongmessage.type) == MSG_PONG ? "PONG" : "UNKNOWN");
             heartbeats = 0;
             tv.tv_sec = KEEP_ALIVE_TIME;
         }
