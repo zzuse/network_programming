@@ -43,7 +43,10 @@ ninja -t clean
     then start `bin/unixdataclient <local_path>`
     then type some message in client, and press enter, you will see the message in server.
 *  Shell/tcpdump.shell Chapter 8
-*  C/graceclose Chapter 9
+*  C/graceclose Chapter 11
     start `bin/graceserver`
     then start `bin/graceclient <IPaddress>`
+*  C/keepalive Chapter 12
+    start `bin/keepaliveserver sleepingtime`
+    then start `bin/keepaliveclient <IPaddress>`
     
