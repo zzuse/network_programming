@@ -1,11 +1,11 @@
-# include "lib/common.h"
+#include "lib/common.h"
 
-# define    MAXLINE     4096
+#define MAXLINE 4096
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     if (argc != 2) {
         error(1, 0, "usage: graceclient <IPaddress>");
-
     }
     int socket_fd;
     socket_fd = socket(AF_INET, SOCK_STREAM, 0);
@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
     inet_pton(AF_INET, argv[1], &server_addr.sin_addr);
 
     socklen_t server_len = sizeof(server_addr);
-    int connect_rt = connect(socket_fd, (struct sockaddr *) &server_addr, server_len);
+    int connect_rt = connect(socket_fd, (struct sockaddr *)&server_addr, server_len);
     if (connect_rt < 0) {
         error(1, errno, "connect failed ");
     }
@@ -34,8 +34,7 @@ int main(int argc, char **argv) {
     for (;;) {
         readmask = allreads;
         int rc = select(socket_fd + 1, &readmask, NULL, NULL, NULL);
-        if (rc <= 0)
-            error(1, errno, "select failed");
+        if (rc <= 0) error(1, errno, "select failed");
         if (FD_ISSET(socket_fd, &readmask)) {
             n = read(socket_fd, recv_line, MAXLINE);
             if (n < 0) {
@@ -74,11 +73,7 @@ int main(int argc, char **argv) {
                     }
                     printf("send bytes: %zu \n", rt);
                 }
-
             }
         }
-
     }
-
 }
-
