@@ -1,3 +1,5 @@
+set_compiler_options(zz)
+
 add_executable(pingclient pingclient.c)
 target_link_libraries(pingclient zz)
 
